@@ -9,12 +9,15 @@ const GoalItems = ({ goals, deleteGoalHandler }) => {
         data={goals}
         renderItem={(itemData) => {
           return (
-            <Pressable
-              onPress={deleteGoalHandler.bind(this, itemData.item.id)}
-              style={styles.listItem}
-            >
-              <Text style={styles.listItemText}>{itemData.item.text}</Text>
-            </Pressable>
+            <View style={styles.listItem}>
+              <Pressable
+                android_ripple={{ color: "#ddd" }}
+                onPress={deleteGoalHandler.bind(this, itemData.item.id)}
+                style={({ pressed }) => pressed && styles.pressed}
+              >
+                <Text style={styles.listItemText}>{itemData.item.text}</Text>
+              </Pressable>
+            </View>
           );
         }}
         keyExtractor={(item, index) => {
@@ -38,6 +41,9 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     color: "#fff",
+  },
+  pressed: {
+    opacity: 0.5,
   },
 });
 
