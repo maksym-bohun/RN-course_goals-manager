@@ -9,7 +9,10 @@ const GoalItems = ({ goals, deleteGoalHandler }) => {
         data={goals}
         renderItem={(itemData) => {
           return (
-            <Pressable onPress={deleteGoalHandler} style={styles.listItem}>
+            <Pressable
+              onPress={deleteGoalHandler.bind(this, itemData.item.id)}
+              style={styles.listItem}
+            >
               <Text style={styles.listItemText}>{itemData.item.text}</Text>
             </Pressable>
           );

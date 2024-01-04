@@ -18,8 +18,9 @@ export default function App() {
     setGoals((prevGoals) => [enteredText, ...prevGoals]);
   };
 
-  const deleteGoalHandler = (e) => {
-    console.log("LOL");
+  const deleteGoalHandler = (id) => {
+    console.log(id);
+    setGoals((currentGoals) => currentGoals.filter((goal) => goal.id !== id));
   };
 
   return (
